@@ -1,0 +1,28 @@
+{% extends 'Customer/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="Customerreg" style="width: 80%;margin: 3% 10%;color: white;">
+    <div style="width: 30%;margin: 5% 5%;color: white;padding: 5% 0%;">
+            {% if messages %}
+            {% for msj in messages %}
+            <div class="alert alert-danger" role="alert">
+                <b style="font-size: medium;">{{msj}}</b>
+              </div>
+            {% endfor %}
+            {% endif %}
+            <form method="POST">
+                <h3 style="text-align: center;padding: 2% 0% 4% 0%;">Member Registration</h3>
+                {% csrf_token %}
+                {{form|crispy}}
+                <br>
+                <button type="submit" class="btn btn-info btn-lg btn-block">Member Register</button>
+                
+              </form>
+              <div style="text-align: center;margin: 5% 50%;"><b>OR</b></div>
+                <a href="{% url 'login' %}"><button type="submit" class="btn btn-light btn-lg btn-block" style="color:blue;">Existing User?Member Log in</button></a>
+                <br>
+             </div>
+    </div>
+</div>
+{% endblock %}

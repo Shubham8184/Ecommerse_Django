@@ -1,0 +1,49 @@
+{% extends 'Seller/base.html' %}
+
+{% block content %}
+    <!-- <form method="POST" class="jumbotron" style="width: 40%;margin: 3% 30% 3% 30%;">
+        <h3>Seller Login</h3>
+        {% csrf_token %}
+            <input type="number" name="mobile" placeholder="Enter Mobile No.">
+            <br>
+            <input type="password" name="password" placeholder="Enter Password">
+            <br><br>
+            {% if messages %}
+                {% for i in messages %}
+                    {{i}}
+                {% endfor %}
+            {% endif %}
+                <button type="submit">Login</button>
+    </form> -->
+    <div class="Sellerlogin" style="width: 80%;margin: 3% 10%;color: white;">
+    <div style="width: 40%;margin: 5% 5%;color: white;padding: 5% 0%;">
+        {% if messages %}
+        {% for msj in messages %}
+        <div class="alert alert-danger" role="alert">
+            <b style="font-size: medium;">{{msj}}</b>
+          </div>
+        {% endfor %}
+        {% endif %}
+    <form method="POST">
+        <h3 style="text-align: center;padding: 2% 0% 4% 0%;">Member Login</h3>
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="formGroupExampleInput">Mobile No.</label>
+          <input type="number" class="form-control" id="formGroupExampleInput" name="mobile" placeholder="Enter your mobile number" required=True>
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Password</label>
+          <input type="password" class="form-control" id="formGroupExampleInput2" name="password" placeholder="Enter your password" required=True>
+        </div><br>
+        <button type="submit" class="btn btn-info btn-lg btn-block"><a>Member Login</a></button>
+        
+      </form>
+      <div style="text-align: center;margin: 5% 50%;"><b>OR</b></div>
+        <a href="{% url 'Sellerforgotpass' %}"><button type="submit" class="btn btn-light btn-lg btn-block" style="color:blue;">Forgot Password?</button></a>
+        <br><br>
+        <div>
+            <a href="{% url 'sellerregister' %}" style="text-align: center;margin-left: 20%;text-decoration: none;color: white;"><b>New to CJC Seller Hub? Create an account</b></a>
+        </div>
+    </div>
+    </div>
+{% endblock %}

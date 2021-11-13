@@ -1,0 +1,19 @@
+{% extends 'Seller/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <form method="POST" enctype="multipart/form-data" class="jumbotron" style="width: 50%; margin: 4% 25%;">
+        {% if messages %}
+            {% for msj in messages %}
+            <div class="alert alert-success" role="alert">
+                <b style="font-size: medium;">{{msj}}</b>
+              </div>
+            {% endfor %}
+        {% endif %}
+        <h3 style="text-align: center;padding: 2% 0% 4% 0%;">Grocery Registration</h3>
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit" class="btn btn-info btn-lg btn-block">Add Grocery</button>
+    </form>
+{% endblock %}
+

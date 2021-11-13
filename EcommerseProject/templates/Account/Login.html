@@ -1,0 +1,36 @@
+{% extends 'Customer/base.html' %}
+
+{% block content %}
+    <div class="Customerlogin" style="width: 80%;margin: 3% 10%;color: white;">
+      <div style="width: 35%;margin: 5% 5%;color: white;padding: 5% 0%;">
+        {% if messages %}
+        {% for msj in messages %}
+        <div class="alert alert-danger" role="alert">
+            <b style="font-size: medium;">{{msj}}</b>
+          </div>
+        {% endfor %}
+        {% endif %}
+    <form method="POST">
+        <h3 style="text-align: center;padding: 2% 0% 4% 0%;"><b>Member Login</b></h3>
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="formGroupExampleInput">Mobile No.</label>
+          <input type="number" class="form-control" id="formGroupExampleInput" name="mobile" placeholder="Enter your mobile number" required=True>
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Password</label>
+          <input type="password" class="form-control" id="formGroupExampleInput2" name="password" placeholder="Enter your password" required=True>
+        </div><br>
+        <button type="submit" class="btn btn-info btn-lg btn-block">Member Login</button>
+        
+      </form>
+      <div style="text-align: center;margin: 5% 50%;"><b>OR</b></div>
+        <a href="{% url 'Customerforgotpass' %}" ><button type="submit" class="btn btn-light btn-lg btn-block" style="color:blue;">Forgot Password?</button></a>
+        <br><br>
+        <div>
+            <a href="{% url 'register' %}" style="text-align: center;margin-left: 15%;text-decoration: none;color: white;">New to CJC Seller Hub? Create an account</a>
+        </div>
+        </div>
+      </div>
+      
+{% endblock %}
